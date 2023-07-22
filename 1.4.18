@@ -1,0 +1,6 @@
+Collecting SQLAlchemy
+  Using cached SQLAlchemy-2.0.19-cp39-cp39-win_amd64.whl (2.0 MB)
+Requirement already satisfied: greenlet!=0.4.17 in c:\users\hp\appdata\local\packages\pythonsoftwarefoundation.python.3.9_qbz5n2kfra8p0\localcache\local-packages\python39\site-packages (from SQLAlchemy) (2.0.2)
+Requirement already satisfied: typing-extensions>=4.2.0 in c:\users\hp\appdata\local\packages\pythonsoftwarefoundation.python.3.9_qbz5n2kfra8p0\localcache\local-packages\python39\site-packages (from SQLAlchemy) (4.7.1)
+Installing collected packages: SQLAlchemy
+Successfully installed SQLAlchemy-2.0.19
