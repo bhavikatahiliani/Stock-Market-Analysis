@@ -11,6 +11,8 @@ def create_app():
     # Update the SQLALCHEMY_DATABASE_URI directly
     app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 
+    app.config['SECRET_KEY'] = 'asdjfls978578!l'
+
     # Initialize the database
     db.init_app(app)
 

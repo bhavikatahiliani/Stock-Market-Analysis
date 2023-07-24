@@ -105,3 +105,106 @@
 .nav-links {
     margin-left: auto;
 }
+/* app/static/main.css */
+.flashes {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.flash-success {
+    color: green;
+}
+
+.flash-info {
+    color: blue;
+}
+
+.flash-warning {
+    color: orange;
+}
+
+.flash-danger {
+    color: red;
+}
+
+/* app/static/main.css */
+
+/* Styles for login.html, logout.html, and register.html */
+.login-content,
+.logout-content,
+.register-content {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.login-content h1,
+.logout-content h1,
+.register-content h1 {
+    text-align: center;
+}
+
+/* Styles for register.html only */
+.register-content form {
+    margin-top: 20px;
+}
+
+.register-content form .form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.register-content form .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.register-content form .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.register-content form .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for login.html and logout.html */
+.login-content form .form-control,
+.logout-content p {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-content form .btn-primary,
+.logout-content .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-content form .btn-primary:hover,
+.logout-content .btn-primary:hover {
+    background-color: #0056b3;
+}
