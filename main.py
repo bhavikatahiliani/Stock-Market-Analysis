@@ -1,5 +1,5 @@
 
-# main.py
+#stock_market/main.py
 
 from app import create_app, db
 # from config import create_user_table

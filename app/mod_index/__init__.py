@@ -1,3 +1,4 @@
+#app/mod_index/__init__.py file
 from flask import Blueprint
 
 # Create the blueprint object with a non-empty name
