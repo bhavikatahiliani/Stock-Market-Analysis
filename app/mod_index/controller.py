@@ -6,7 +6,10 @@ from app import db
 
 # from app import app, db
 from app.models.login import User
-
+from app.models.stock import Stock
+from jugaad_data.nse import NSELive
+import yfinance as yf
+from yahoo_fin import stock_info
 
 @mod_index.route('/')
 def index():
@@ -69,3 +72,100 @@ def logout():
     session.pop('user_id', None)
     flash('You have been logged out.', 'success')
     return redirect(url_for('mod_index.logout'))
+
+
+
+
+
+# @mod_index.route('/stocks')
+# def fetch_live_stocks():
+#     try:
+#         # Fetch stock symbols from the database
+#         stocks = Stock.query.all()
+#         print("Stocks:")
+#         print(stocks)
+
+#         stock_symbols = [stock.symbol for stock in stocks]
+
+#         # Fetch live stock data for each symbol using jugaad_data.nse and yfinance
+#         live_stock_data = {}
+#         for stock_symbol in stock_symbols:
+#             try:
+#                 nse = NSELive()
+#                 stock_data = nse.get_quote(stock_symbol)
+#                 live_stock_data[stock_symbol] = stock_data['lastPrice']
+#             except Exception as e:
+#                 print(f"Error fetching NSE data for {stock_symbol} using jugaad_data.nse: {e}")
+#                 try:
+#                     stock = yf.Ticker(stock_symbol)
+#                     stock_data = stock.info
+#                     live_stock_data[stock_symbol] = stock_data.get('regularMarketPrice', None)
+#                 except Exception as e:
+#                     print(f"Error fetching NSE data for {stock_symbol} using yfinance: {e}")
+#                     live_stock_data[stock_symbol] = None
+
+#         return render_template('stocks.html', live_stock_data=live_stock_data)
+#     except Exception as e:
+#         print(f"Error fetching live stocks: {e}")
+#         return "Error fetching live stocks"
+
+# app/mod_index/controller.py
+
+
+# app/mod_index/controller.py
+
+
+# @mod_index.route('/stocks')
+# def fetch_live_stocks():
+#     try:
+#         # Fetch stock symbols from the database
+#         stocks = Stock.query.all()
+#         print("Stocks:")
+#         print(stocks)
+
+#         stock_symbols = [stock.symbol for stock in stocks]
+
+#         # Fetch live stock data for each symbol using yfinance
+#         live_stock_data = {}
+#         for stock_symbol in stock_symbols:
+#             try:
+#                 stock = yf.Ticker(stock_symbol)
+#                 stock_data = stock.info
+#                 if 'regularMarketPrice' in stock_data:
+#                     live_stock_data[stock_symbol] = stock_data['regularMarketPrice']
+#                 else:
+#                     live_stock_data[stock_symbol] = None
+#             except Exception as e:
+#                 print(f"Error fetching stock data for {stock_symbol} using yfinance: {e}")
+#                 live_stock_data[stock_symbol] = None
+
+#         return render_template('stocks.html', live_stock_data=live_stock_data)
+#     except Exception as e:
+#         print(f"Error fetching live stocks: {e}")
+#         return "Error fetching live stocks"
+
+
+@mod_index.route('/stocks')
+def fetch_live_stocks():
+    try:
+        # Fetch stock symbols from the database
+        stocks = Stock.query.all()
+        print("Stocks:")
+        print(stocks)
+
+        stock_symbols = [stock.symbol for stock in stocks]
+
+        # Fetch live stock data for each symbol using yahoo_fin
+        live_stock_data = {}
+        for stock_symbol in stock_symbols:
+            try:
+                live_price = stock_info.get_live_price(stock_symbol)
+                live_stock_data[stock_symbol] = live_price
+            except Exception as e:
+                print(f"Error fetching stock data for {stock_symbol} using yahoo_fin: {e}")
+                live_stock_data[stock_symbol] = None
+
+        return render_template('stocks.html', live_stock_data=live_stock_data)
+    except Exception as e:
+        print(f"Error fetching live stocks: {e}")
+        return "Error fetching live stocks"
