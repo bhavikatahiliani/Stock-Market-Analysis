@@ -1,0 +1,24 @@
+<!-- app/templates/trade.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Dummy Trade</h1>
+<table>
+    <tr>
+        <th>Stock Name</th>
+        <th>Stock Symbol</th>
+        <th>Price</th>
+        <th>Buy</th>
+        <th>Sell</th>
+    </tr>
+    {% for stock in stocks %}
+    <tr>
+        <td>{{ stock.name }}</td>
+        <td>{{ stock.symbol }}</td>
+        <td>{{ live_stock_data[stock.symbol] }}</td>
+        <td><a href="{{ url_for('mod_trade.buy', stock_id=stock.id) }}">BUY</a></td>
+        <td><a href="{{ url_for('mod_trade.sell', stock_id=stock.id) }}">SELL</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

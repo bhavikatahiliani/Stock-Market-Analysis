@@ -16,9 +16,11 @@ def create_app():
     # Initialize the database
     db.init_app(app)
 
-    # Register the blueprint for mod_index
+    # Register the blueprints
     from .mod_index import mod_index
+    from .mod_trade import mod_trade
     app.register_blueprint(mod_index)
+    app.register_blueprint(mod_trade)
 
     return app
 

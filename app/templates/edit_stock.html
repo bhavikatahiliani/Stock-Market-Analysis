@@ -1,0 +1,19 @@
+<!-- app/templates/edit_stock.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Edit Stock</h1>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.symbol.label(class="form-label") }}
+        {{ form.symbol(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Update Stock</button>
+</form>
+{% endblock %}

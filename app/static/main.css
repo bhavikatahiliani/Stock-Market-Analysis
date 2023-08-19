@@ -208,3 +208,75 @@
 .logout-content .btn-primary:hover {
     background-color: #0056b3;
 }
+
+
+/* Add these styles to your existing main.css file */
+
+/* Updated Card Styles for a more attractive design */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    width: 300px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    font-size: 16px;
+}
+
+/* Add a gradient background to the cards */
+.card:nth-child(odd) {
+    background: linear-gradient(to bottom right, #FFB6C1, #FF69B4);
+}
+
+.card:nth-child(even) {
+    background: linear-gradient(to bottom right, #87CEEB, #4682B4);
+}
+
+/* Center the cards */
+.center-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Add these styles to your existing main.css file */
+
+/* Add these styles to your existing main.css file */
+
+/* Updated Heading Styles */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2E86C1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.db-status {
+    font-size: 18px;
+    color: #555;
+}
