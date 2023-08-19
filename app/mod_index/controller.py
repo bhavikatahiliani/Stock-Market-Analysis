@@ -10,9 +10,10 @@ from app.models.stock import Stock
 from jugaad_data.nse import NSELive
 import yfinance as yf
 from yahoo_fin import stock_info
+from app.forms import StockForm
 
 
-@mod_index.route('/')
+@mod_index.route('/index')
 def index():
     # Check if the database is connected
     db_status = "Connected" if db.engine else "Not Connected"
@@ -49,7 +50,7 @@ def register():
 # app/routes.py
 
 
-@mod_index.route('/login', methods=['GET', 'POST'])
+@mod_index.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -68,11 +69,12 @@ def login():
 
     return render_template('login.html')
 
-@mod_index.route('/logout')
+@mod_index.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.pop('user_id', None)
     flash('You have been logged out.', 'success')
-    return redirect(url_for('mod_index.logout'))
+    return redirect(url_for('mod_index.login'))
+
 
 
 
@@ -168,3 +170,63 @@ def fetch_live_stocks():
     except Exception as e:
         print(f"Error fetching live stocks: {e}")
         return "Error fetching live stocks"
+    
+
+# app/mod_index/controller.py
+
+# ... (existing code)
+
+# Add a route to display a list of all stocks
+@mod_index.route('/stocks/list')
+def list_stocks():
+    stocks = Stock.query.all()
+    return render_template('stock_list.html', stocks=stocks)
+
+@mod_index.route('/add_stock', methods=['GET', 'POST'])
+def add_stock():
+    form = StockForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        symbol = form.symbol.data
+        Stock.create_stock(name, symbol)
+        flash('Stock added successfully!', 'success')
+        return redirect(url_for('mod_index.add_stock'))
+    return render_template('add_stock.html', form=form)
+
+@mod_index.route('/edit_stock/<int:stock_id>', methods=['GET', 'POST'])
+def edit_stock(stock_id):
+    stock = Stock.query.get(stock_id)
+    if not stock:
+        flash('Stock not found!', 'danger')
+        return redirect(url_for('mod_index.edit_stock'))
+    form = StockForm(obj=stock)
+    if form.validate_on_submit():
+        name = form.name.data
+        symbol = form.symbol.data
+        Stock.update_stock(stock_id, name, symbol)
+        flash('Stock updated successfully!', 'success')
+        return redirect(url_for('mod_index.edit_stock', stock_id=stock_id))
+    return render_template('edit_stock.html', form=form, stock=stock)
+
+# @mod_index.route('/delete_stock/<int:stock_id>', methods=['POST'])
+# def delete_stock(stock_id):
+#     stock = Stock.query.get(stock_id)
+#     if stock:
+#         Stock.delete_stock(stock_id)
+#         flash('Stock deleted successfully!', 'success')
+#     else:
+#         flash('Stock not found!', 'danger')
+#     return redirect(url_for('mod_index.delete_stock', stock_id=stock_id))
+
+@mod_index.route('/delete_stock/<int:stock_id>', methods=['GET', 'POST'])
+def delete_stock(stock_id):
+    if request.method == 'POST':
+        stock = Stock.query.get(stock_id)
+        if stock:
+            Stock.delete_stock(stock_id)
+            flash('Stock deleted successfully!', 'success')
+        else:
+            flash('Stock not found!', 'danger')
+    
+    # Redirect back to the stock list page, for example:
+    return redirect(url_for('mod_index.list_stocks'))

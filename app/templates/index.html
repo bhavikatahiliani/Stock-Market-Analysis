@@ -2,6 +2,58 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Welcome to the Stock Market Web App!</h1>
-    <p>Database connectivity status: {{ db_status }}</p>
+    <div class="header">
+        <h1 class="title">Welcome to the Stock Market Web App</h1>
+        <p class="db-status">Database Connectivity Status: {{ db_status }}</p>
+    </div>
+
+    <!-- Card Container -->
+    <div class="center-cards">
+        <!-- First Card -->
+        <div class="card" onclick="redirectToPage1()">
+            <h2>Live Stocks Price!</h2>
+            <p>Click To Get Live Stocks Data.</p>
+        </div>
+
+        <!-- Second Card -->
+        <div class="card" onclick="redirectToPage2()">
+            <h2>Start Your Dummy Trade!</h2>
+            <p>Click To Trade</p>
+        </div>
+    </div>
+    <div class="center-cards">
+        <!-- First Card -->
+        <div class="card" onclick="redirectToPage3()">
+            <h2>Add Your Favorite Stocks!</h2>
+            <p>Click To Add, Update, Delete Stocks.</p>
+        </div>
+
+        <!-- Second Card -->
+        <div class="card" onclick="redirectToPage4()">
+            <h2>Start Your Dummy Trade!</h2>
+            <p>Click To Trade</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to redirect to Page 1
+        function redirectToPage1() {
+            window.location.href = '/stocks'; // Replace '/page1' with the actual URL you want to redirect to.
+        }
+
+        // Function to redirect to Page 2
+        function redirectToPage2() {
+            window.location.href = '/trade'; // Replace '/page2' with the actual URL you want to redirect to.
+        }
+
+        // Function to redirect to Page 2
+        function redirectToPage3() {
+            window.location.href = '/stocks/list'; // Replace '/page2' with the actual URL you want to redirect to.
+        }
+
+        // Function to redirect to Page 2
+        function redirectToPage4() {
+            window.location.href = '/trade'; // Replace '/page2' with the actual URL you want to redirect to.
+        }
+    </script>
 {% endblock %}
