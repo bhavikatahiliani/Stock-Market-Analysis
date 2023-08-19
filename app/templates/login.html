@@ -1,7 +1,25 @@
 <!-- app/templates/login.html -->
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Market Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+   <ul class="flashes">
+       {% for category, message in messages %}
+       <li class="flash-{{ category }}">{{ message }}</li>
+       {% endfor %}
+   </ul>
+   {% endif %}
+   {% endwith %}
 
-{% block content %}
+   <div class="content">
+       {% block content %}
+       {% endblock %}
+   </div>
     <div class="login-content">
         <h1>Login</h1>
         <form method="post">
@@ -14,6 +32,13 @@
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+        </form><br><br>
+        <label for="register" class="form-label">New user register here. </label><br><br><br>
+        <a href="{{ url_for('mod_index.register') }}" class="btn btn-primary">Register</a>
     </div>
-{% endblock %}
+   <!-- Add this block to display flash messages -->
+   
+
+   <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

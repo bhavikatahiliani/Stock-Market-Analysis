@@ -1,7 +1,25 @@
 <!-- app/templates/register.html -->
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Market Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+   <ul class="flashes">
+       {% for category, message in messages %}
+       <li class="flash-{{ category }}">{{ message }}</li>
+       {% endfor %}
+   </ul>
+   {% endif %}
+   {% endwith %}
 
-{% block content %}
+   <div class="content">
+       {% block content %}
+       {% endblock %}
+   </div>
     <div class="register-content">
         <h1>Register</h1>
         <form method="post">
@@ -20,4 +38,7 @@
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
-{% endblock %}
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

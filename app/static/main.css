@@ -280,3 +280,306 @@
     font-size: 18px;
     color: #555;
 }
+
+
+/* Custom CSS */
+.stocks-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.stocks-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.stocks-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stocks-header {
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+}
+
+.stocks-symbol,
+.stocks-price {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.stocks-symbol {
+    font-weight: bold;
+}
+
+
+
+/* Custom CSS */
+.trade-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.trade-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.trade-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.trade-header {
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+}
+
+.trade-stock-name,
+.trade-stock-symbol,
+.trade-price,
+.trade-action {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.buy-button,
+.sell-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.buy-button:hover,
+.sell-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Custom CSS */
+.trade-form-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.trade-form-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.trade-form {
+    width: 100%;
+}
+
+.trade-form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.trade-form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.trade-form-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.trade-form-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* Custom CSS for stock_list.html */
+.stock-list-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.stock-list-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stock-table-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.stock-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.stock-edit-link,
+.stock-delete-button,
+.add-stock-link {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.stock-edit-link {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.stock-delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.add-stock-link {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+
+/* Custom CSS for stock_list.html */
+.stock-actions {
+    display: flex;
+    align-items: center;
+}
+
+.stock-edit-link,
+.stock-delete-button {
+    margin-right: 10px; /* Adjust the spacing between buttons */
+}
+
+
+
+/* static/styles.css */
+/* Add your custom CSS styles here */
+
+/* Center the form on the page */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Style the form elements */
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style the form container */
+.form-container {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+
+
+/* static/styles.css */
+/* Add your custom CSS styles here */
+/* static/styles.css */
+/* Add your custom CSS styles here */
+
+/* Style the portfolio table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Style the portfolio chart */
+.portfolio-chart {
+    max-width: 100%; /* Adjust the chart width as needed */
+    height: 50%;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Center the entire content */
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}

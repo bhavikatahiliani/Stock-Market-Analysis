@@ -8,6 +8,8 @@ from datetime import datetime
 # from flask_login import  current_user
 from app.mod_trade import mod_trade
 from yahoo_fin import stock_info
+import matplotlib.pyplot as plt
+
 
 
 # @mod_trade.route('/')
@@ -151,3 +153,159 @@ def sell(stock_id):
 #         flash("Trade not found.", 'error')
 
 #     return redirect(url_for('trade.trade'))
+
+
+
+
+# @mod_trade.route('/portfolio')
+# def portfolio():
+#     user_id = session.get('user_id')
+#     if user_id is None:
+#         flash('Please login to view your portfolio.', 'danger')
+#         return redirect(url_for('mod_index.login'))
+
+#     # Query the user's trades
+#     user_trades = Trade.query.filter_by(user_id=user_id).all()
+
+#     # Create a dictionary to store the user's portfolio data
+#     portfolio_data = {}
+
+#     # Calculate the portfolio
+#     for trade in user_trades:
+#         stock_symbol = trade.stock_symbol
+#         quantity = trade.quantity
+#         current_price = stock_info.get_live_price(stock_symbol)
+#         total_value = quantity * current_price
+
+#         if stock_symbol in portfolio_data:
+#             portfolio_data[stock_symbol]['quantity'] += quantity
+#             portfolio_data[stock_symbol]['total_value'] += total_value
+#         else:
+#             portfolio_data[stock_symbol] = {
+#                 'quantity': quantity,
+#                 'current_price': current_price,
+#                 'total_value': total_value
+#             }
+
+#     return render_template('portfolio.html', portfolio_data=portfolio_data)
+
+
+
+
+# @mod_trade.route('/portfolio')
+# def portfolio():
+#     user_id = session.get('user_id')
+#     if user_id is None:
+#         flash('Please login to view your portfolio.', 'danger')
+#         return redirect(url_for('mod_index.login'))
+
+#     # Query the user's trades
+#     user_trades = Trade.query.filter_by(user_id=user_id).all()
+
+#     # Create a dictionary to store the user's portfolio data
+#     portfolio_data = {}
+
+#     # Calculate the portfolio
+#     for trade in user_trades:
+#         stock_symbol = trade.stock_symbol
+#         quantity = trade.quantity
+#         current_price = stock_info.get_live_price(stock_symbol)
+#         total_value = quantity * current_price
+
+#         if stock_symbol in portfolio_data:
+#             portfolio_data[stock_symbol]['quantity'] += quantity
+#             portfolio_data[stock_symbol]['total_value'] += total_value
+#         else:
+#             portfolio_data[stock_symbol] = {
+#                 'quantity': quantity,
+#                 'current_price': current_price,
+#                 'total_value': total_value
+#             }
+
+#     # Extract data for the graph
+#     stock_symbols = list(portfolio_data.keys())
+#     portfolio_values = [data['total_value'] for data in portfolio_data.values()]
+
+#     # Create a bar chart
+#     plt.figure(figsize=(10, 6))
+#     plt.bar(stock_symbols, portfolio_values)
+#     plt.xlabel('Stock Symbol')
+#     plt.ylabel('Total Value')
+#     plt.title('Portfolio Value by Stock Symbol')
+#     plt.xticks(rotation=45)
+#     plt.tight_layout()
+
+#     # Save the chart to a file or render it in the template
+#     # You can save it to a file like this:
+#     # plt.savefig('portfolio_chart.png')
+
+#     # Or render it in the template like this:
+#     # portfolio_chart = plt_to_img(plt)  # Assuming you have a function to convert plt to an image
+
+#     # Return the chart to the template
+#     # return render_template('portfolio.html', portfolio_data=portfolio_data, portfolio_chart=portfolio_chart)
+    
+#     # For this example, I'm saving the chart to a file
+#     plt.savefig('portfolio_chart.png')
+    
+#     return render_template('portfolio.html', portfolio_data=portfolio_data)
+
+
+import io
+import base64
+
+# ... (other imports and route definitions)
+
+@mod_trade.route('/portfolio')
+def portfolio():
+    user_id = session.get('user_id')
+    if user_id is None:
+        flash('Please login to view your portfolio.', 'danger')
+        return redirect(url_for('mod_index.login'))
+
+    # Query the user's trades
+    user_trades = Trade.query.filter_by(user_id=user_id).all()
+
+    # Create a dictionary to store the user's portfolio data
+    portfolio_data = {}
+
+    # Calculate the portfolio
+    for trade in user_trades:
+        stock_symbol = trade.stock_symbol
+        quantity = trade.quantity
+        current_price = stock_info.get_live_price(stock_symbol)
+        total_value = quantity * current_price
+
+        if stock_symbol in portfolio_data:
+            portfolio_data[stock_symbol]['quantity'] += quantity
+            portfolio_data[stock_symbol]['total_value'] += total_value
+        else:
+            portfolio_data[stock_symbol] = {
+                'quantity': quantity,
+                'current_price': current_price,
+                'total_value': total_value
+            }
+
+    # Extract data for the graph
+    stock_symbols = list(portfolio_data.keys())
+    portfolio_values = [data['total_value'] for data in portfolio_data.values()]
+
+    # Create a bar chart
+    plt.figure(figsize=(10, 6))
+    plt.bar(stock_symbols, portfolio_values)
+    plt.xlabel('Stock Symbol')
+    plt.ylabel('Total Value')
+    plt.title('Portfolio Value by Stock Symbol')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    # Save the chart as an image
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+
+    # Encode the image as base64
+    chart_url = base64.b64encode(img.getvalue()).decode()
+
+    return render_template('portfolio.html', portfolio_data=portfolio_data, portfolio_chart=chart_url)
+

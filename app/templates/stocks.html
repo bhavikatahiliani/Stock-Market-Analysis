@@ -2,17 +2,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Live Stock Prices</h1>
-<table>
-    <tr>
-        <th>Stock Symbol</th>
-        <th>Price</th>
-    </tr>
-    {% for symbol, price in live_stock_data.items() %}
-    <tr>
-        <td>{{ symbol }}</td>
-        <td>{{ price }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <div class="stocks-container">
+        <h1 class="stocks-heading">Live Stock Prices</h1>
+        <table class="stocks-table">
+            <tr>
+                <th class="stocks-header">Stock Symbol</th>
+                <th class="stocks-header">Price</th>
+            </tr>
+            {% for symbol, price in live_stock_data.items() %}
+            <tr>
+                <td class="stocks-symbol">{{ symbol }}</td>
+                <td class="stocks-price">{{ price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
