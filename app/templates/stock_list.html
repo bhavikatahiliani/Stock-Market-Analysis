@@ -1,27 +1,29 @@
 <!-- stock_list.html -->
 {% extends 'base.html' %}
 {% block content %}
-<h1>List of Stocks</h1>
-<table>
-    <!-- Table headers -->
-    <tr>
-        <th>Stock Name</th>
-        <th>Stock Symbol</th>
-        <th>Actions</th>
-    </tr>
-    <!-- Table rows -->
-    {% for stock in stocks %}
-    <tr>
-        <td>{{ stock.name }}</td>
-        <td>{{ stock.symbol }}</td>
-        <td>
-            <a href="{{ url_for('mod_index.edit_stock', stock_id=stock.id) }}">Edit</a>
-            <form method="POST" action="{{ url_for('mod_index.delete_stock', stock_id=stock.id) }}">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-<a href="{{ url_for('mod_index.add_stock') }}">Add New Stock</a>
+<div class="stock-list-container">
+    <h1 class="stock-list-heading">List of Stocks</h1>
+    <table class="stock-table">
+        <!-- Table headers -->
+        <tr>
+            <th class="stock-table-header">Stock Name</th>
+            <th class="stock-table-header">Stock Symbol</th>
+            <th class="stock-table-header">Actions</th>
+        </tr>
+        <!-- Table rows -->
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.symbol }}</td>
+            <td class="stock-actions">
+                <a class="stock-edit-link" href="{{ url_for('mod_index.edit_stock', stock_id=stock.id) }}">Edit</a>
+                <form method="POST" action="{{ url_for('mod_index.delete_stock', stock_id=stock.id) }}">
+                    <button class="stock-delete-button" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a class="add-stock-link" href="{{ url_for('mod_index.add_stock') }}">Add New Stock</a>
+</div>
 {% endblock %}

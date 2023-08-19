@@ -2,23 +2,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Dummy Trade</h1>
-<table>
-    <tr>
-        <th>Stock Name</th>
-        <th>Stock Symbol</th>
-        <th>Price</th>
-        <th>Buy</th>
-        <th>Sell</th>
-    </tr>
-    {% for stock in stocks %}
-    <tr>
-        <td>{{ stock.name }}</td>
-        <td>{{ stock.symbol }}</td>
-        <td>{{ live_stock_data[stock.symbol] }}</td>
-        <td><a href="{{ url_for('mod_trade.buy', stock_id=stock.id) }}">BUY</a></td>
-        <td><a href="{{ url_for('mod_trade.sell', stock_id=stock.id) }}">SELL</a></td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="trade-container">
+    <h1 class="trade-heading">Dummy Trade</h1>
+    <table class="trade-table">
+        <tr>
+            <th class="trade-header">Stock Name</th>
+            <th class="trade-header">Stock Symbol</th>
+            <th class="trade-header">Price</th>
+            <th class="trade-header">Buy</th>
+            <th class="trade-header">Sell</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td class="trade-stock-name">{{ stock.name }}</td>
+            <td class="trade-stock-symbol">{{ stock.symbol }}</td>
+            <td class="trade-price">{{ live_stock_data[stock.symbol] }}</td>
+            <td class="trade-action"><a href="{{ url_for('mod_trade.buy', stock_id=stock.id) }}" class="buy-button">BUY</a></td>
+            <td class="trade-action"><a href="{{ url_for('mod_trade.sell', stock_id=stock.id) }}" class="sell-button">SELL</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

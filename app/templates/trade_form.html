@@ -2,10 +2,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ action }} Stock</h1>
-<form method="post">
-    <label for="quantity">Enter Quantity:</label>
-    <input type="number" name="quantity" id="quantity" required>
-    <button type="submit">{{ action }}</button>
-</form>
+<div class="trade-form-container">
+    <h1 class="trade-form-heading">{{ action }} Stock</h1>
+    <form class="trade-form" method="post">
+        <label class="trade-form-label" for="quantity">Enter Quantity:</label>
+        <input class="trade-form-input" type="number" name="quantity" id="quantity" required>
+        <button class="trade-form-button" type="submit">{{ action }}</button>
+    </form>
+</div>
 {% endblock %}
