@@ -1,0 +1,1 @@
+web: python stock_market/app/__init__.py
