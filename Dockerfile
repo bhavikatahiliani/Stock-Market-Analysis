@@ -10,7 +10,7 @@ ENV FLASK_ENV=production
 ENV DATABASE_URL=postgresql://postgres:root@localhost/Stocks
 
 # Set the working directory in the container
-WORKDIR /stock_market
+WORKDIR /main
 
 # Copy the requirements.txt file to the working directory
 COPY requirements.txt .
