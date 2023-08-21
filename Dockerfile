@@ -12,8 +12,12 @@ ENV DATABASE_URL=postgresql://postgres:root@localhost/Stocks
 # Set the working directory in the container
 WORKDIR /stock_market
 
+COPY requirements.txt .
+
 # Copy your application code into the container
 COPY . /app
+
+
 
 # Install system dependencies
 RUN apt-get update \
