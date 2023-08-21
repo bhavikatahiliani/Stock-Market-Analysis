@@ -26,6 +26,8 @@ RUN apt-get update \
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir psycopg2==2.9.1
+RUN pip install --no-cache-dir click==8.1.3
 
 # Expose the port your Flask app will run on
 EXPOSE 5000
