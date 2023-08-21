@@ -25,7 +25,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # install psycopg2 binary package
 RUN apt-get install -y libpq-dev
 RUN pip install --no-cache-dir psycopg2==2.9.1
-RUN pip install --no-cache-dir click==8.1.3
 
 # Copy your application code into the container
 COPY . /stock_market
