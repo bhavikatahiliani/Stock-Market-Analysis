@@ -38,7 +38,7 @@ Flask-Migrate==4.0.4
 Flask-Script==2.0.6
 Flask-SQLAlchemy==3.0.5
 Flask-WTF==1.1.1
-fonttools==4.42.0
+fonttools==4.38.0
 fqdn==1.5.1
 frozendict==2.3.8
 greenlet==2.0.2
