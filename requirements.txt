@@ -74,7 +74,7 @@ matplotlib-inline==0.1.6
 mistune==3.0.1
 multitasking==0.0.11
 nbclient==0.7.4
-nbconvert==7.7.3
+nbconvert==7.6.0
 nbformat==5.9.2
 nest-asyncio==1.5.7
 notebook==7.0.2
