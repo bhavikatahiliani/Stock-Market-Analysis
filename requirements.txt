@@ -79,7 +79,7 @@ nbformat==5.8.0
 nest-asyncio==1.5.7
 notebook==7.0.0a11
 notebook_shim==0.2.3
-numpy==1.25.2
+numpy==1.21.6
 overrides==7.4.0
 packaging==23.1
 pandas==2.0.3
