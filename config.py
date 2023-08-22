@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session
-import os
+# import os
 
 POSTGRES_USER = 'postgres'
 POSTGRES_PASSWORD = 'root'
@@ -18,8 +18,8 @@ DATABASE_URI = f'postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST
 
 # Flask SQLAlchemy configuration
 db = SQLAlchemy()
-# SQLALCHEMY_DATABASE_URI = DATABASE_URI
-SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+SQLALCHEMY_DATABASE_URI = DATABASE_URI
+# SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 Base = declarative_base()

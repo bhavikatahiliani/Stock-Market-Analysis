@@ -148,5 +148,4 @@ Werkzeug==2.3.6
 widgetsnbextension==4.0.8
 WTForms==3.0.1
 yahoo-fin==0.8.9.1
-yfinance==0.2.27
 zipp==3.16.2

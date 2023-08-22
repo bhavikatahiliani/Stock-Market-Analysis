@@ -7,8 +7,6 @@ from app import db
 # from app import app, db
 from app.models.login import User
 from app.models.stock import Stock
-from jugaad_data.nse import NSELive
-import yfinance as yf
 from yahoo_fin import stock_info
 from app.forms import StockForm
 
